@@ -1,5 +1,7 @@
 {
   "name": "testeTutorialLogin",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

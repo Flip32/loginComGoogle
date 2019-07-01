@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <div *ngIf="auth.user$ | async as user; else logar">
+      <div>
+        <h1> Bem Vindo {{user.displayName}}</h1>
+        <ion-button color="secondary" routerLink="/home">Iniciar</ion-button>
+        <ion-button (click)="auth.logOut()" color="warning">Log out</ion-button>
+
+      </div>
+    </div>
+    <ng-template #logar>
+      <ion-button  color="primary" routerLink="/home">Iniciar Sem login</ion-button>
+      <ion-button (click)="auth.loginGoogle()" color="danger">Log In with Google</ion-button>
+    </ng-template>
+  </div>
+</ion-content>
