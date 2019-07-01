@@ -1,4 +1,4 @@
-#Login com Google Ionic 4 e Firebase
+Login com Google Ionic 4 e Firebase
 
 ## O conteúdo o projeto foi feito em cima de informações encontradas na internet.
 
