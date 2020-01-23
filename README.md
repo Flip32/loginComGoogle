@@ -1,48 +1,71 @@
-##Login com Google Ionic 4 e Firebase
+<h1 align="center">
+Login com Google Ionic 4 e Firebase
+</h1>
 
 
-## O conteúdo o projeto foi feito em cima de informações encontradas na internet.
+<h4 align="center"> O conteúdo do projeto foi feito em cima de informações encontradas na internet.</h4>
 
-### Esse conteúdo tem o único propósito servir de guia para mim e a quem servir para criar uma aplicação em Ionic 4 e Firebase com Login utilizando Google plus.
-### Também é utilizado acesso restrito com CanActivate.
+<h4 align="center"> Esse conteúdo tem o único propósito servir de guia para mim e a quem interessar para criar uma aplicação em Ionic 4 e Firebase com Login utilizando Google plus. </h4>
 
-## É necessário
-### Ter Ionic | Ter conta no Firebase | Liberar no Firebase a autenticação com Google
+<h4> Também é utilizado acesso restrito com <span style="font-weight: bolder"> CanActivate </span>. </h4> 
 
+## Pré Requisitos
+<h4 align="center"> 
+<p> Ter Node </p>    
+<p> Ter Ionic e Cordova  </p>
+    
+    npm install -g ionic cordova
+    
+<p> Ter conta no Firebase </p> 
+<p> Liberar no Firebase a autenticação com Google. </p>
 
-#####Crie o projeto Ionic com id
-######ex.: ionic start nomeProjeto blank --id=com.app.nomeProjeto
-######Caso esteja num projeto já em andamento e não adicionou id. Basta ir em Config.xml e mudar manualmente. Algo como
-    <widget id="com.app.nomeProjeto" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+</h4>
 
-#####No console do projeto instale o firebase
+## Começando
+<p> Crie o projeto Ionic com id </p>
+
+    ionic start nomeProjeto blank --id=com.app.nomeProjeto
+    
+<p> Caso esteja num projeto já em andamento e não adicionou id. Basta ir em Config.xml e mudar manualmente. Algo como => widget id="com.app.nomeProjeto" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0"
+</p>
+
+<p> No console do projeto instale o firebase </p>
 
  	npm install firebase @angular/fire --save
 
-#####Agora vá até o Firebase em seu projeto e adicione os aplicativos ios e android. 
-######Configurações adicionar aplicativo/ ios e em 'Código do pacote do IOS' escreva o seu domínio ao contrário
-######ex.: com.app.nomeDoProjeto. Não é obrigatório ter o domínio registrado para funcionar.
-#####Faça a mesma coisa para adicionar o Android, porém é necessário preencher a SHA-1, para isso vá no console do projeto
+<p> Agora vá até o Firebase em seu projeto e adicione os aplicativos ios e android. </p>
+
+<p> Configurações > adicionar aplicativo/ ios > em 'Código do pacote do IOS' escreva: o seu domínio ao contrário
+<p style="font-style: italic">ex.: com.app.nomeDoProjeto. </p>
+<p> Não é obrigatório ter o domínio registrado para funcionar. </p>
+&nbsp;&nbsp;&nbsp;
+<p>Faça a mesma coisa para adicionar o Android, porém é necessário preencher a SHA-1, para isso vá no console do projeto:</p>
 
 	keytool -exportcert -list -v -alias androiddebugkey -keystore ~/.android/debug.keystore
 
-#####A senha inicial é 'android'
-#####Copie e cole no firebase e clique em registrar app.
+<p> A senha inicial é 'android' </p>
+<p>Copie e cole no firebase e clique em registrar app.</p>
 
-#####Adicionar o google plus
- #####E o plugin do cordova para o gplus, criado por Eddy Verbruggen https://twitter.com/eddyverbruggen.
+##Adicionar o google plus
+
+<p>Também é necessário adicionar o plugin do cordova para o gplus. Criado por 
+<a href="https://twitter.com/eddyverbruggen">  Eddy Verbruggen</a>. </p>
 
 	npm install --save @ionic-native/google-plus@beta
 	
 	ionic cordova plugin add cordova-plugin-googleplus --save --variable REVERSED_CLIENT_ID=YOUR_REVERSE_CLIENT_ID
 
 	
-####Sua REVERSED_CLIENT_ID só é necessaria para ios, e vc a encontra no GoogleService-Info.plist
-######Deve possuir o seguinte esquema:  com.googleusercontent.apps.uniqueId
+<p>Sua REVERSED_CLIENT_ID só é necessaria para ios. Pode encontrá-la no GoogleService-Info.plist </p>
+<p> Deve possuir o seguinte esquema:  
+<span style="font-weight: bolder"> com.googleusercontent.apps.uniqueId </span>
+</p>
 
 
-#####Adicione agora, no firebase, o app da Web, para usarmos o Database e salvar os usuários
-#####Copie a firebaseConfig e cole no environments.ts (Não se esqueça de trocar o = por : )
+<p> Adicione agora, no firebase, o app da Web, para usarmos o Database e salvar os usuários INSERIR IMAGEM AQUI!! </p> 
+
+<P>Copie a firebaseConfig, do seu projeto no Firebase Console, e cole em 
+<span style="font-style: italic"> environments.ts </span>, no seu projeto. OBS: Não se esqueça de trocar o " = " por " : "  </P>
 
     export const environment = {
     production: false,
@@ -57,23 +80,26 @@
     }
     };
 
-#####Crie um banco de dados. No menu esquerdo no console do Firebase, clique em Database e depois criar banco de dados. Deixe em modo Teste (Se desejar depois mude as configurações de segurança, aconselhavel)
-###Dentro da pasta do projeto, no console
+##Crie um banco de dados
+<p>  No menu esquerdo do console do Firebase, clique em Database. E depois em Criar banco de dados. </p> 
+<p> Deixe em modo Teste (Se desejar depois mude as configurações de segurança, aconselhavel) </p>
+<p> Dentro da pasta do projeto, no console: </p>
 
-####Criar um serviço
+<h4> Crie um serviço </h4>
 
 	ionic g service services/auth
 
-####Criar um guard no serviço
+<h4> Crie um guard no serviço </h4>
 
 	ionic g guard services/auth
 
-####Criar Pagina de login
+<h4> Crie Pagina de login </h4>
 
 	ionic g page login
 
-####Criar interface
-#####Na pasta services adicione um arquivo user.model.ts
+<h4> Crie Interface do usuário </h4>
+<p> Na pasta services, adicione um arquivo 
+<span style="font-style: italic"> user.model.ts </span> </p>
 
     export interface User {
         uid: string;
@@ -84,7 +110,8 @@
     }
 
 
-#####Agora vá em app.module.ts e import, algo do tipo:
+<h4> Agora vá em 
+ <span style="font-style: italic"> app.module.ts </span>  e import, algo do tipo: </h4>
 
 
     import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -104,8 +131,9 @@
 
     ],
 
-####Em app-routing.module.ts
-Mude a pagina inicial para login
+<h4> Em 
+ <span style="font-style: italic"> app-routing.module.ts </span></h4>
+<p> Mude a pagina inicial para login </p>
 
 	const routes: Routes = [
   	{ path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -114,7 +142,7 @@ Mude a pagina inicial para login
 	];
 
 
-Em no serviço auth.service.ts
+<h4> E no serviço <span style="font-style: italic"> auth.service.ts </span> </h4>
 
     import { Injectable } from '@angular/core';
     import { Router } from '@angular/router';
@@ -204,18 +232,19 @@ Em no serviço auth.service.ts
     }
 
 
-#####Agora vá em login.page.ts
+<p> Agora vá em <span style="font-style: italic"> login.page.ts </span> </p>
 
-#####import e declare uma variavel no construtor
-    import {AuthService} from '../services/auth.service';
+<p> import e declare uma variavel no construtor </p>
 
-    contructor(private auth: AuthService) {}
-
-
-#####No template login.page.html
+    import { AuthService } from '../services/auth.service';
+    contructor(private auth: AuthService) { }
 
 
-#####Insira a diretiva *ngIf para mostrar o botão logar quando não houver usuario logado, e o restante quando houver.
+<h4> No template <span style="font-style: italic"> login.page.html </span> </h4>
+
+
+<p> Insira a diretiva 
+ <span style="font-weight: bolder"> *ngIf </span> para mostrar o botão logar quando não houver usuario logado, e o restante quando houver. </p>
 
 
     <ion-content>
@@ -237,8 +266,10 @@ Em no serviço auth.service.ts
     </ion-content>
 
 
-#####Agora vamos implementar algumas restrições de acesso no aplicativo
-#####No auth.guard.ts
+##Restrições
+
+<h4> Agora vamos implementar algumas restrições de acesso no aplicativo </h4>
+<h5> Em <span style="font-style: italic"> auth.guard.ts </span> </h5>
 
 
     import { Injectable } from '@angular/core';
@@ -276,9 +307,9 @@ Em no serviço auth.service.ts
     }
     }
 
-#####Agora volte em app-routing.module.ts import AuthGuard e o chame nas paginas que deseja limitar acesso ao usuário logado.
+<h5> Volte em <span style="font-style: italic"> app-routing.module.ts </span> e import AuthGuard. Chame-o nas paginas que deseja limitar acesso ao usuário logado. </h5>
 
-    import {AuthGuard} from './services/auth.guard';
+    import { AuthGuard } from './services/auth.guard';
 
     const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -287,14 +318,15 @@ Em no serviço auth.service.ts
     ];
 
 
-#####Em home acessaremos os dados do usuário, que uma vez logado teve seus dados(email, nome, uid e url da imagem) salvas no DB.
-#####Em home.page.ts import 
+<p> Em home acessaremos os dados do usuário, que uma vez logado teve seus dados(email, nome, uid e url da imagem) salvas no DB. </p>
 
-    import {AuthService} from '../services/auth.service';
+<h5> Import em <span style="font-style: italic"> home.page.ts </span>: </h5>
 
-#####e declare a variavel no construtor - private auth: AuthService
+    import { AuthService } from '../services/auth.service';
 
-#####em home.page.html, algo como
+<p> declare a variavel no construtor - private auth: AuthService </p>
+
+<h5> Em <span style="font-style: italic">  home.page.html </span> algo como: </h5>
 
     <ion-header>
     <ion-toolbar>
@@ -317,7 +349,5 @@ Em no serviço auth.service.ts
     </ion-content>
 
 
-###Isso é tudo!
-###
-###
-###
+<h5> Isso é tudo! </h5>
+
