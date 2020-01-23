@@ -7,10 +7,10 @@ Login com Google Ionic 4 e Firebase
 
 <h4 align="center"> Esse conteúdo tem o único propósito servir de guia para mim e a quem interessar para criar uma aplicação em Ionic 4 e Firebase com Login utilizando Google plus. </h4>
 
-<h4> Também é utilizado acesso restrito com <span style="font-weight: bolder"> CanActivate </span>. </h4> 
+<h4 align="center"> Também é utilizado acesso restrito com <span style="font-weight: bolder"> CanActivate </span>. </h4> 
 
 ## Pré Requisitos
-<h4 align="center"> 
+<h4> 
 <p> Ter Node </p>    
 <p> Ter Ionic e Cordova  </p>
     
@@ -22,14 +22,14 @@ Login com Google Ionic 4 e Firebase
 </h4>
 
 ## Começando
-<p> Crie o projeto Ionic com id </p>
+<p style="font-weight: bold"> Crie o projeto Ionic com id </p>
 
     ionic start nomeProjeto blank --id=com.app.nomeProjeto
     
 <p> Caso esteja num projeto já em andamento e não adicionou id. Basta ir em Config.xml e mudar manualmente. Algo como => widget id="com.app.nomeProjeto" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0"
 </p>
 
-<p> No console do projeto instale o firebase </p>
+<p style="font-weight: bold"> No console do projeto instale o firebase </p>
 
  	npm install firebase @angular/fire --save
 
@@ -39,16 +39,16 @@ Login com Google Ionic 4 e Firebase
 <p style="font-style: italic">ex.: com.app.nomeDoProjeto. </p>
 <p> Não é obrigatório ter o domínio registrado para funcionar. </p>
 &nbsp;&nbsp;&nbsp;
-<p>Faça a mesma coisa para adicionar o Android, porém é necessário preencher a SHA-1, para isso vá no console do projeto:</p>
+<p style="font-weight: bold">Faça a mesma coisa para adicionar o Android, porém é necessário preencher a SHA-1, para isso vá no console do projeto:</p>
 
 	keytool -exportcert -list -v -alias androiddebugkey -keystore ~/.android/debug.keystore
 
 <p> A senha inicial é 'android' </p>
-<p>Copie e cole no firebase e clique em registrar app.</p>
+<p style="font-weight: bold">Copie e cole no firebase e clique em registrar app.</p>
 
-##Adicionar o google plus
+## Adicionar o google plus
 
-<p>Também é necessário adicionar o plugin do cordova para o gplus. Criado por 
+<p style="font-weight: bold">Também é necessário adicionar o plugin do cordova para o gplus. Criado por 
 <a href="https://twitter.com/eddyverbruggen">  Eddy Verbruggen</a>. </p>
 
 	npm install --save @ionic-native/google-plus@beta
@@ -64,8 +64,8 @@ Login com Google Ionic 4 e Firebase
 
 <p> Adicione agora, no firebase, o app da Web, para usarmos o Database e salvar os usuários INSERIR IMAGEM AQUI!! </p> 
 
-<P>Copie a firebaseConfig, do seu projeto no Firebase Console, e cole em 
-<span style="font-style: italic"> environments.ts </span>, no seu projeto. OBS: Não se esqueça de trocar o " = " por " : "  </P>
+<p style="font-weight: bold">Copie a firebaseConfig, do seu projeto no Firebase Console, e cole em 
+<span style="font-style: italic"> environments.ts </span>, no seu projeto. OBS: Não se esqueça de trocar o " = " por " : "  </p>
 
     export const environment = {
     production: false,
@@ -80,7 +80,7 @@ Login com Google Ionic 4 e Firebase
     }
     };
 
-##Crie um banco de dados
+## Crie um banco de dados
 <p>  No menu esquerdo do console do Firebase, clique em Database. E depois em Criar banco de dados. </p> 
 <p> Deixe em modo Teste (Se desejar depois mude as configurações de segurança, aconselhavel) </p>
 <p> Dentro da pasta do projeto, no console: </p>
@@ -234,7 +234,7 @@ Login com Google Ionic 4 e Firebase
 
 <p> Agora vá em <span style="font-style: italic"> login.page.ts </span> </p>
 
-<p> import e declare uma variavel no construtor </p>
+<p style="font-weight: bold"> import e declare uma variavel no construtor </p>
 
     import { AuthService } from '../services/auth.service';
     contructor(private auth: AuthService) { }
@@ -266,7 +266,7 @@ Login com Google Ionic 4 e Firebase
     </ion-content>
 
 
-##Restrições
+## Restrições - Guard
 
 <h4> Agora vamos implementar algumas restrições de acesso no aplicativo </h4>
 <h5> Em <span style="font-style: italic"> auth.guard.ts </span> </h5>
