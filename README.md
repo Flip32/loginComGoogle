@@ -11,13 +11,15 @@ Login com Google Ionic 4 e Firebase
 
 ## Pré Requisitos
 <h4> 
-<p> Ter Node </p>    
+<p> Ter Node > <span style="font-size: xx-small"> <a href="https://nodejs.org/en/"> download </a> </span> </p>    
 <p> Ter Ionic e Cordova  </p>
     
     npm install -g ionic cordova
     
-<p> Ter conta no Firebase </p> 
-<p> Liberar no Firebase a autenticação com Google. </p>
+<p> Ter conta no  <span> <a href="https://firebase.google.com/"> Firebase </a> </span> </p> 
+<p> Liberar no Firebase a autenticação com Google.
+ <img alt="imagemAutenticacaoGoogle" src="./.github/firebase_google_authentication.png" />
+ </p>
 
 </h4>
 
@@ -62,7 +64,9 @@ Login com Google Ionic 4 e Firebase
 </p>
 
 
-<p> Adicione agora, no firebase, o app da Web, para usarmos o Database e salvar os usuários INSERIR IMAGEM AQUI!! </p> 
+<p> Adicione agora, no firebase, o app da Web, para usarmos o Database e salvar os usuários </p> 
+<p> <img alt="Criar Database" src=".github/CriarDatabase.png"> </p>
+<p> <img alt="Config" src=".github/config.png"> </p>
 
 <p style="font-weight: bold">Copie a firebaseConfig, do seu projeto no Firebase Console, e cole em 
 <span style="font-style: italic"> environments.ts </span>, no seu projeto. OBS: Não se esqueça de trocar o " = " por " : "  </p>
